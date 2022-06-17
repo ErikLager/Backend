@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server stuff</title>
+</head>
+<body>
+    <h1>Server stuff</h1>
+    
+    <!-- Register -->
+    <form onsubmit="registerUser(); return false">
+        <h2>Register</h2>
+        <input 
+            id="register-username" 
+            placeholder="Username" 
+            required 
+            type="text"/>
+
+        <input 
+            id="register-password" 
+            placeholder="password" 
+            required 
+            type="password"/>
+            <button type="submit">Register</button>
+    </form>
+
+    <!-- Login -->
+    <form onsubmit="LoginUser(); return false">
+        <h2>Log in</h2>
+        <input 
+            id="Login-username" 
+            placeholder="Username" 
+            required 
+            type="text"/>
+
+        <input 
+            id="Login-password" 
+            placeholder="password" 
+            required 
+            type="password"/>
+            <button type="submit">Login</button>
+    </form>
+    <h2>Chech auth</h2>
+    <button onclick="checkLoggedinStatus()">Am I logged in</button>
+    <h2>Log out</h2>
+    <button onclick="logOut()">logOut</button>
+    <script src="./app.js"></script>
+</body>
+</html>
