@@ -147,7 +147,7 @@ userRouter.put("/update/:id", passport.authenticate("user-rule", { session: fals
 
 // get order history
 userRouter.get("/getorderhistory", passport.authenticate("user-rule", { session: false }), (req, res) => {
-    User.findById({ _Id: req.user._id })
+    User.findById({ _id: req.user._id })
         .populate("orderHistory")
         .exec((e, user) => {
             if (e) {

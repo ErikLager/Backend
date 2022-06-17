@@ -99,57 +99,57 @@ orderRouter.get("/getorders", passport.authenticate("admin-rule", { session: fal
 });
 
 // Handle Order
-orderRouter.put(
-    "/handleorder/:id",
-    passport.authenticate("admin-rule", { session: false }),
-    (req, res) => {
-        Order.findByIdAndUpdate(
-            { _id: req.params.id },
-            { handled: req.body.handled },
-            (err) => {
-                if (err) {
-                    res.status(500).json({
-                        message: {
-                            msgBody: "An error occured handling order",
-                            msgError: true,
-                        },
-                    });
-                } else {
-                    res.status(200).json({
-                        message: {
-                            msgBody: "Successfully handled order",
-                            msgError: false,
-                        },
-                    });
-                }
-            }
-        );
-    }
-);
-// orderRouter.put("/handleorder/:id", passport.authenticate("admin-rule", { session: false }), (req, res) => {
-//     Order.findByIdAndUpdate({ _id: req.params.id }, { handled: req.body.handled }, (e) => {
-//         if (e) {
-//             res.status(500).json(
-//                 {
-//                     message: {
-//                         msgBody: "An error occured while handling order",
-//                         msgError: true,
-//                         error: e
-//                     }
-//                 },
-//             );
-//         } else {
-//             res.status(200).json(
-//                 {
-//                     message: {
-//                         msgBody: "Successfully upådated handler",
-//                         msgError: false,
-//                     }
+// orderRouter.put(
+//     "/handleorder/:id",
+//     passport.authenticate("admin-rule", { session: false }),
+//     (req, res) => {
+//         Order.findByIdAndUpdate(
+//             { _id: req.params.id },
+//             { handled: req.body.handled },
+//             (err) => {
+//                 if (err) {
+//                     res.status(500).json({
+//                         message: {
+//                             msgBody: "An error occured handling order",
+//                             msgError: true,
+//                         },
+//                     });
+//                 } else {
+//                     res.status(200).json({
+//                         message: {
+//                             msgBody: "Successfully handled order",
+//                             msgError: false,
+//                         },
+//                     });
 //                 }
-//             );
-//         };
-//     });
-// });
+//             }
+//         );
+//     }
+// );
+orderRouter.put("/handleorder/:id", passport.authenticate("admin-rule", { session: false }), (req, res) => {
+    Order.findByIdAndUpdate({ _id: req.params.id }, { handled: req.body.handled }, (e) => {
+        if (e) {
+            res.status(500).json(
+                {
+                    message: {
+                        msgBody: "An error occured while handling order",
+                        msgError: true,
+                        error: e
+                    }
+                },
+            );
+        } else {
+            res.status(200).json(
+                {
+                    message: {
+                        msgBody: "Successfully upådated handler",
+                        msgError: false,
+                    }
+                }
+            );
+        };
+    });
+});
 
 // delete order
 orderRouter.delete("/delete/:id", passport.authenticate("admin-rule", { session: false }), (req, res) => {
