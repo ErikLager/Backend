@@ -4,6 +4,9 @@ const passport = require("passport");
 const passportConfig = require("../passport");
 const Order = require("../models/Order");
 const User = require("../models/User");
+// const { orderConfirmed } = require("../serverices/emailService");
+const orderConfirmed = require("../serverices/emailService")
+
 
 
 // Add new order
@@ -54,6 +57,7 @@ orderRouter.post("/neworder", (req, res) => {
                                         msgError: false
                                     }
                                 });
+                                orderConfirmed(req.body)
                             };
                         });
                     };
@@ -65,6 +69,7 @@ orderRouter.post("/neworder", (req, res) => {
                         msgError: false
                     }
                 });
+                orderConfirmed(req.body)
             };
         };
     });
