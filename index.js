@@ -11,7 +11,7 @@ const productRouter = require("./api/product");
 const orderRouter = require("./api/order");
 
 // dev env vars
-require("dotenv").config();
+// require("dotenv").config();
 
 // Middlewear
 app.use(cookieParser());
