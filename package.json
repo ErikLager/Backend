@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "nodemon index"
+    "dev": "nodemon index",
+    "install-react-client": "cd client-react && npm install",
+    "build-frontend": "cd client-react && npm run build",
+    "heroku-postbuild": "npm run install-react-client && npm run build frontend"
   },
   "keywords": [],
   "author": "",
